@@ -4,7 +4,7 @@ cd $DIR
 source "$DIR/env/bin/activate"
 git pull
 pip install -r requirements.txt
-python "$DIR/youke.py"
+python "$DIR/server.py"
 PID=$!
 
 while true; do
@@ -18,7 +18,7 @@ while true; do
     if [[ "${reslog}" != "" ]] ; then
         git merge origin/master
         kill -KILL $PID
-        python "$DIR/youke.py"
+        python "$DIR/server.py"
         PID=$!
 	fi
 done
