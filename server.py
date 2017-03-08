@@ -20,12 +20,9 @@ def queue(id, title):
     else:
         return "already been in queue"
 
-if __name__ == '__main__':
+def run_server():
     db.init_data()
     db.load_to_file()
-    print "**************************"
-    db.display()
-    print "**************************"
 
     player_event = Event()
     thread_player = Player(player_event)
@@ -50,4 +47,5 @@ if __name__ == '__main__':
 
     run(host='0.0.0.0', port=8000, server=PasteServer)
 
-
+if __name__ == '__main__':
+    run_server()
