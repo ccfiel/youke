@@ -1,3 +1,5 @@
 bottle
 bottle-rest
 paste
+pafy
+youtube-dl
