@@ -1,5 +1,4 @@
 from server import run_server
-from server import server
 import subprocess
 import sys
 import os
@@ -8,13 +7,9 @@ from threading import Thread
 
 
 def restart_program():
-    server.stop()
-    server.server_close()
-    run_server()
-    # time.sleep(30)
-    #
-    # python = sys.executable
-    # os.execl(python, python, *sys.argv)
+    sys.stderr.close()
+    python = sys.executable
+    os.execl(python, python, *sys.argv)
 
 
 def update_app():
@@ -43,4 +38,3 @@ if __name__ == '__main__':
     t.setDaemon(True)
     t.start()
     run_server()
-
