@@ -16,7 +16,7 @@ while true; do
     if [[ "${reslog}" != "" ]] ; then
         git merge origin/master
         kill -KILL $PID
-        python "$DIR/server.py"
+        python "$DIR/server.py" &
         PID=$!
 	fi
 done
