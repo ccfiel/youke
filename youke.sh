@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
+pkill python
 source "$DIR/env/bin/activate"
 git reset --hard
 git pull
