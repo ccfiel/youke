@@ -4,5 +4,3 @@ paste
 pafy
 youtube-dl
 kodipydent
-daemon
-lockfile
