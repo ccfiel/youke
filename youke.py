@@ -9,6 +9,7 @@ from threading import Thread
 
 def restart_program():
     server.stop()
+    server.server_close()
     run_server()
     # time.sleep(30)
     #
