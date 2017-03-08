@@ -9,7 +9,7 @@ pip install -r requirements.txt
 python "$DIR/server.py" &
 PID=$!
 while true; do
-    sleep 30
+    sleep 120
     git fetch origin
     reslog=$(git log HEAD..origin/master --oneline)
     if [[ "${reslog}" != "" ]] ; then
