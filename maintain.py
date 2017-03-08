@@ -12,7 +12,7 @@ class Maintain(Thread):
         self.files = [f for f in listdir(path()) if isfile(join(path(), f))]
 
     def run(self):
-        while not self.stopped.wait(60):
+        while not self.stopped.wait(20):
             self.set_status_to_cache()
             db.save_to_file()
 
