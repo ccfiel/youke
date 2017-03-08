@@ -7,6 +7,7 @@ from threading import Thread
 
 
 def restart_program():
+    sys.stderr.close()
     python = sys.executable
     os.execl(python, python, *sys.argv)
 
@@ -29,7 +30,7 @@ def check_update():
     while True:
         if not update_app():
             restart_program()
-        time.sleep(300)
+        time.sleep(30)
 
 
 if __name__ == '__main__':

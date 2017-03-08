@@ -20,6 +20,7 @@ def queue(id, title):
     else:
         return "already been in queue"
 
+
 def run_server():
     db.init_data()
     db.load_to_file()
