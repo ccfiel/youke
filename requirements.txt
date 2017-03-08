@@ -3,3 +3,4 @@ bottle-rest
 paste
 pafy
 youtube-dl
+kodipydent
