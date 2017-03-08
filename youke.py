@@ -1,4 +1,5 @@
 from server import run_server
+from server import server
 import subprocess
 import sys
 import os
@@ -7,7 +8,7 @@ from threading import Thread
 
 
 def restart_program():
-    sys.stderr.close()
+    server.stop()
     python = sys.executable
     os.execl(python, python, *sys.argv)
 
