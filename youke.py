@@ -9,6 +9,7 @@ from threading import Thread
 
 def restart_program():
     server.stop()
+    time.sleep(30)
     python = sys.executable
     os.execl(python, python, *sys.argv)
 
