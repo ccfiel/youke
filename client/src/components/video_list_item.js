@@ -2,6 +2,7 @@ import React from 'react';
 var axios = require('axios');
 
 function onVideoClick(video) {
+    console.log(video);
     axios.post('/queue', {
         id: video.id.videoId,
         title: video.snippet.title
@@ -28,6 +29,7 @@ const VideoListItem = ({video, onVideoSelect}) => {
       </div>
       <div className="media-body">
         <div className="media-heading">{video.snippet.title}</div>
+        <div className="media-heading">{video.snippet.channelTitle}</div>
       </div>
     </div>
   </li>
