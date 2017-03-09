@@ -9,11 +9,18 @@ class SearchBar extends Component {
 
   render() {
     return (
-        <div className="search-bar">
-        <input 
-          value = {this.state.term}
-          onChange={event => this.onInputChange(event.target.value)} />
-        </div>
+        <nav>
+            <div className="nav-wrapper">
+              <form>
+                <div className="input-field">
+                  <input id="search" type="search" required value = {this.state.term} onChange={event => this.onInputChange(event.target.value)}/>
+                  <label className="label-icon" for="search"><i className="material-icons">search</i></label>
+                  <i className="material-icons">close</i>
+                </div>
+              </form>
+            </div>
+        </nav>
+
     );
   }
 

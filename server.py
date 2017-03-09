@@ -27,9 +27,9 @@ def queue(id, title):
         player = kodi()
         db.insert_data({"youtube_id": id, "title": title, "status": "idle"})
         player.GUI.ShowNotification(title=title, message="Successfully Queued", displaytime=20000)
-        return "ok"
+        return "Song Successfully Queued"
     else:
-        return "already been in queue"
+        return "Song already been in queued"
 
 
 def run_server():

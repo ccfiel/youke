@@ -8,6 +8,7 @@ function onVideoClick(video) {
     })
     .then(function (response) {
         console.log(response);
+        Materialize.toast(response.data, 3000, 'rounded')
     })
     .catch(function (error) {
         console.log(error);
@@ -23,7 +24,7 @@ const VideoListItem = ({video}) => {
   return (
 <div>
  <div className="row">
-    <div className="col s12 m6">
+    <div className="col s12">
       <div className="card">
         <div className="card-image">
           <img src={imageUrl}/>
