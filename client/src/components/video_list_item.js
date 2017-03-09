@@ -28,7 +28,7 @@ const VideoListItem = ({video}) => {
       <div className="card">
         <div className="card-image">
           <img src={imageUrl}/>
-          <a onClick={() => onVideoClick(video)} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
+          <a onClick={() => onVideoClick(video)} className="btn-floating halfway-fab waves-effect waves-light red btn-large"><i className="material-icons">add</i></a>
         </div>
         <div className="card-content">
           <p>{video.snippet.title}</p>
