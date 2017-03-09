@@ -2,7 +2,6 @@ import React from 'react';
 var axios = require('axios');
 
 function onVideoClick(video) {
-    console.log(video);
     axios.post('/queue', {
         id: video.id.videoId,
         title: video.snippet.title
@@ -18,21 +17,32 @@ function onVideoClick(video) {
 };
 
 
-const VideoListItem = ({video, onVideoSelect}) => {
+const VideoListItem = ({video}) => {
   const imageUrl = video.snippet.thumbnails.default.url;
 
   return (
-  <li onClick={() => onVideoClick(video)} className="list-group-item">
-    <div className="video-list media">
-      <div className="media-left">
-        <img className="media-object" src={imageUrl} />
-      </div>
-      <div className="media-body">
-        <div className="media-heading">{video.snippet.title}</div>
-        <div className="media-heading">{video.snippet.channelTitle}</div>
+<div>
+ <div className="row">
+    <div className="col s12 m6">
+      <div className="card">
+        <div className="card-image">
+          <img src={imageUrl}/>
+          <a onClick={() => onVideoClick(video)} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
+        </div>
+        <div className="card-content">
+          <p>{video.snippet.title}</p>
+        </div>
+          <div className="card-action">
+              <p style={{color: 'gray'}}>{video.snippet.channelTitle}</p>
+            </div>
+
       </div>
     </div>
-  </li>
+  </div>
+
+
+</div>
+
   );
 }
 
