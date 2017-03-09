@@ -8,6 +8,11 @@ git pull
 pip install -r requirements.txt
 python "$DIR/server.py" &
 PID=$!
+
+if [ -f /media/usb0/Videoke/data.db ]; then
+    rm /media/usb0/Videoke/data.db
+fi
+
 while true; do
     sleep 120
     git fetch origin

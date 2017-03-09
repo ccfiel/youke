@@ -1,5 +1,0 @@
-check process server
-matching "server.py"
-start program = "/bin/bash -c '/home/xbian/youke/youke.sh >> /tmp/youke.log &'"
-stop program = "/usr/bin/pkill -f server"
-
