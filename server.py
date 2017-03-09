@@ -1,4 +1,4 @@
-from bottle import post, run, PasteServer
+from bottle import post, run, PasteServer, route
 from bottle_rest import json_to_params
 from threading import Event
 from downloader import Downloader
@@ -7,6 +7,17 @@ from notify import Notify
 from maintain import Maintain
 import db
 from db import kodi
+from bottle import static_file
+
+
+@route('/')
+def home():
+    return static_file('index.html', root='client/')
+
+
+@route('/<filename>')
+def static(filename):
+    return static_file(filename, root='client/')
 
 
 @post("/queue")
@@ -46,7 +57,7 @@ def run_server():
     thread_maintain.setDaemon(True)
     thread_maintain.start()
 
-    run(host='0.0.0.0', port=80, server=PasteServer)
+    run(host='0.0.0.0', port=8000, server=PasteServer)
 
 if __name__ == '__main__':
     run_server()
