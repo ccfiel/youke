@@ -124,8 +124,11 @@ def next_alternative_song():
             print song
             print percent
             print "****************"
-            select = similar_song(song, percent)
+            select = similar_song(song['title'], percent)
             if select:
+                print percent
+                print song['title']
+                print select
                 return select
         percent -= 10
 

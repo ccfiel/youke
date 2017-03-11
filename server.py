@@ -57,7 +57,7 @@ def run_server():
     thread_maintain.setDaemon(True)
     thread_maintain.start()
 
-    run(host='0.0.0.0', port=80, server=PasteServer)
+    run(host='0.0.0.0', port=8000, server=PasteServer)
 
 if __name__ == '__main__':
     run_server()
