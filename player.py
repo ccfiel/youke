@@ -33,6 +33,7 @@ class Player(Thread):
         song = db.play_next()
         if song:
             try:
+                db.set_to_done()
                 self.play_the_song(song)
             except:
                None
