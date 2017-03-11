@@ -110,27 +110,25 @@ def similar(a, b):
 
 
 def similar_song(title, percent):
+    per = float(percent / 100.00)
     for song in cache_songs():
-        if similar(song, title) >= percent:
-            return song
+        if similar(song, title) >= per:
+            selected = song.split(".")
+            return selected[0]
     return None
 
 
 def next_alternative_song():
     percent = 95
-    while percent >= 10:
+    while percent >= 1:
         for song in pending_song():
-            print "****************"
-            print song
-            print percent
-            print "****************"
             select = similar_song(song['title'], percent)
             if select:
-                print percent
-                print song['title']
-                print select
+                update(song['youtube_id'], 'status', 'cache')
+                update(song['youtube_id'], 'title', select)
                 return select
         percent -= 10
+    return None
 
 
 def current_playing_song():

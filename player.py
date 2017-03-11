@@ -29,6 +29,7 @@ class Player(Thread):
         self.kodi.Player.Stop(playerid=1)
 
     def play_new_song(self):
+        db.display()
         song = db.play_next()
         if song:
             try:
@@ -36,9 +37,7 @@ class Player(Thread):
             except:
                None
         elif db.is_working():
-            song = db.next_alternative_song()
-            if song:
-                self.play_the_song(song)
+            db.next_alternative_song()
 
     def play_the_song(self, play):
         self.kodi.VideoLibrary.Scan()
