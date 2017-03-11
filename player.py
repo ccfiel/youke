@@ -29,7 +29,9 @@ class Player(Thread):
         self.kodi.Player.Stop(playerid=1)
 
     def play_new_song(self):
+        print "**************************"
         db.display()
+        print "**************************"
         song = db.play_next()
         if song:
             try:
