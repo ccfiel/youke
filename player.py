@@ -31,11 +31,17 @@ class Player(Thread):
     def play_new_song(self):
         song = db.play_next()
         if song:
-            self.play_the_song(song)
-        elif db.is_working():
-            song = db.next_alternative_song()
-            if song:
+            try:
                 self.play_the_song(song)
+            except:
+               None
+        elif db.is_working():
+            try:
+                song = db.next_alternative_song()
+                if song:
+                    self.play_the_song(song)
+            except:
+               None
 
     def play_the_song(self, play):
         self.kodi.VideoLibrary.Scan()
