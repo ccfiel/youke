@@ -25,7 +25,7 @@ class Downloader(Thread):
                         rename_song(info.title)
                     db.update(download['youtube_id'], 'status', 'cache')
                 except:
-                    None
+                    db.update(download['youtube_id'], 'status', 'idle')
 
 
 def strip_title(title):

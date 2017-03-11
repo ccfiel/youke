@@ -29,21 +29,28 @@ class Player(Thread):
         self.kodi.Player.Stop(playerid=1)
 
     def play_new_song(self):
-        play = db.play_next()
-        if play:
-            self.kodi.VideoLibrary.Scan()
-            result = self.kodi.Player.Open(item={"file": str(db.path() + play['title'] + ".mp4")})
-            self.kodi.GUI.ShowNotification(title=play['title'], message="Now Playing", displaytime=20000)
-            if 'error' in result:
-                if play['error'] >= 20:
-                    db.update(play['youtube_id'], 'error', 0)
-                    db.update(play['youtube_id'], 'status', 'error')
+        song = db.play_next()
+        if song:
+            self.play_the_song(song)
+        elif db.is_working():
+            song = db.next_alternative_song()
+            if song:
+                self.play_the_song(song)
 
-                self.kodi.VideoLibrary.Scan()
-                db.update(play['youtube_id'], 'error', play['error'] + 1)
-            else:
-                db.set_to_done()
-                db.update(play['youtube_id'], 'status', 'playing')
+    def play_the_song(self, play):
+        self.kodi.VideoLibrary.Scan()
+        result = self.kodi.Player.Open(item={"file": str(db.path() + play['title'] + ".mp4")})
+        self.kodi.GUI.ShowNotification(title=play['title'], message="Now Playing", displaytime=20000)
+        if 'error' in result:
+            if play['error'] >= 20:
+                db.update(play['youtube_id'], 'error', 0)
+                db.update(play['youtube_id'], 'status', 'error')
+
+            self.kodi.VideoLibrary.Scan()
+            db.update(play['youtube_id'], 'error', play['error'] + 1)
+        else:
+            db.set_to_done()
+            db.update(play['youtube_id'], 'status', 'playing')
 
     def play_current_song(self):
         if not self.is_playing():

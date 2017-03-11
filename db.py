@@ -1,6 +1,7 @@
 from kodipydent import Kodi
 import os
 import pickle
+from difflib import SequenceMatcher
 
 path_str = "/media/usb0/Videoke/"
 kodi_ip = '127.0.0.1'
@@ -45,6 +46,16 @@ def song_downloading():
     return output
 
 
+def pending_song():
+    global data
+    output = []
+    if data:
+        for curr in data:
+            if curr['status'] == 'downloading' or curr['status'] == 'downloading':
+                output.append(curr)
+    return output
+
+
 def update(youtube_id, key, value):
     global data
     for index, element in enumerate(data):
@@ -77,6 +88,42 @@ def next_song():
         return None
     else:
         return 1
+
+
+def is_working():
+    global data
+    for curr in data:
+        if str(curr['status']) == "downloading" or str(curr['status']) == "idle":
+            return True
+    return False
+
+
+def cache_songs():
+    from os import listdir
+    from os.path import isfile, join
+    only_files = [f for f in listdir(path_str) if isfile(join(path_str, f))]
+    return only_files
+
+
+def similar(a, b):
+    return SequenceMatcher(None, a, b).ratio()
+
+
+def similar_song(title, percent):
+    for song in cache_songs():
+        if similar(song, title) >= percent:
+            return song
+    return None
+
+
+def next_alternative_song():
+    percent = 95
+    while percent >= 10:
+        for song in pending_song():
+            select = similar_song(song, percent)
+            if select:
+                return select
+        percent -= 10
 
 
 def current_playing_song():
