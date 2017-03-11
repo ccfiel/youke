@@ -36,12 +36,10 @@ class Player(Thread):
             except:
                None
         elif db.is_working():
-            try:
-                song = db.next_alternative_song()
-                if song:
-                    self.play_the_song(song)
-            except:
-               None
+            song = db.next_alternative_song()
+            if song:
+                self.play_the_song(song)
+
 
     def play_the_song(self, play):
         self.kodi.VideoLibrary.Scan()
