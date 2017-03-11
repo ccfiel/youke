@@ -40,7 +40,6 @@ class Player(Thread):
             if song:
                 self.play_the_song(song)
 
-
     def play_the_song(self, play):
         self.kodi.VideoLibrary.Scan()
         result = self.kodi.Player.Open(item={"file": str(db.path() + play['title'] + ".mp4")})

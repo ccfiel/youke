@@ -51,7 +51,7 @@ def pending_song():
     output = []
     if data:
         for curr in data:
-            if curr['status'] == 'downloading' or curr['status'] == 'downloading':
+            if curr['status'] == 'downloading' or curr['status'] == 'idle':
                 output.append(curr)
     return output
 
@@ -120,6 +120,10 @@ def next_alternative_song():
     percent = 95
     while percent >= 10:
         for song in pending_song():
+            print "****************"
+            print song
+            print percent
+            print "****************"
             select = similar_song(song, percent)
             if select:
                 return select
