@@ -172,4 +172,10 @@ def load_to_file():
             data = pickle.load(fp)
 
 
+def data_exist():
+    if os.path.isfile(path_str + 'data.db'):
+        return True
+    else:
+        return False
+
 

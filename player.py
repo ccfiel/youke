@@ -14,7 +14,7 @@ class Player(Thread):
             if not self.is_playing():
                 self.play_new_song()
 
-            if self.is_finish_playing():
+            if self.is_finish_playing() and db.data_exist():
                 self.stop_player()
                 self.play_new_song()
 
@@ -29,9 +29,6 @@ class Player(Thread):
         self.kodi.Player.Stop(playerid=1)
 
     def play_new_song(self):
-        print "**************************"
-        db.display()
-        print "**************************"
         song = db.play_next()
         if song:
             try:
