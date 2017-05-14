@@ -6,6 +6,7 @@ source "$DIR/env/bin/activate"
 git reset --hard
 git pull
 pip install -r requirements.txt
+pip install --upgrade youtube_dl
 python "$DIR/server.py" &
 PID=$!
 

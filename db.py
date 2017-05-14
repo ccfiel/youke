@@ -3,7 +3,7 @@ import os
 import pickle
 from difflib import SequenceMatcher
 
-path_str = "/media/usb0/Videoke/"
+path_str = "/media/usb0/"
 kodi_ip = '127.0.0.1'
 
 
