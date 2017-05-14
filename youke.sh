@@ -10,8 +10,8 @@ pip install --upgrade youtube_dl
 python "$DIR/server.py" &
 PID=$!
 
-if [ -f /media/usb0/Videoke/data.db ]; then
-    rm /media/usb0/Videoke/data.db
+if [ -f /media/usb0/data.db ]; then
+    rm /media/usb0/data.db
 fi
 
 while true; do
