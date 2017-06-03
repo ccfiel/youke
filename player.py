@@ -13,10 +13,6 @@ class Player(Thread):
         while not self.stopped.wait(2):
             if not self.is_playing():
                 self.play_new_song()
-            print "************************"
-            print self.is_finish_playing()
-            print db.data_exist()
-            print "************************"
             if self.is_finish_playing() and db.data_exist():
                 self.stop_player()
                 self.play_new_song()
